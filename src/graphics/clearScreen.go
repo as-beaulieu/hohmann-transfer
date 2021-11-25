@@ -9,8 +9,6 @@ import (
 // ClearScreen executes the clear command per operating system
 func ClearScreen(operatingSystem string) {
 	fmt.Println(operatingSystem)
-	fmt.Println("Clearing Screen!")
-	fmt.Println("----------------")
 	switch operatingSystem {
 	case "linux":
 		cmd := exec.Command("clear") //Linux example, its tested

@@ -10,8 +10,12 @@ func (gs *State) spaceDiseaseEvent() {
 	graphics.SpaceDiseaseEvent()
 	user.Pause()
 
-	i := Random(5)
-	graphics.SpaceDiseaseCrewIll(gs.Manifest[i])
+	member, err := gs.Crew.WhoToKill()
+	if err != nil {
+		gs.MissionFailure = true
+		return
+	}
+	graphics.SpaceDiseaseCrewIll(member)
 	switch user.Input() {
 	case "1":
 		if gs.Supplies >= 10 {
@@ -22,7 +26,7 @@ func (gs *State) spaceDiseaseEvent() {
 			fmt.Println("You do not have enough supplies!")
 		}
 	case "2":
-		if !gs.Medical.Dead && gs.Medical.TestSkill(50) {
+		if gs.Medical.TestSkill(50) {
 			fmt.Println("Your medical officer cured them")
 			return
 		}
@@ -34,24 +38,12 @@ func (gs *State) spaceDiseaseEvent() {
 	fmt.Println("|                                                                                |")
 	fmt.Printf(
 		"  Your Mission %v Officer has died of %v                           \n",
-		gs.Manifest[i],
+		member,
 		disease,
 	)
 	fmt.Println("|                                                                                |")
 
-	switch gs.Manifest[i] {
-	case "Commander":
-		gs.Commander.Dead = true
-	case "Pilot":
-		gs.Pilot.Dead = true
-	case "Medical":
-		gs.Medical.Dead = true
-	case "Specialist":
-		gs.Specialist.Dead = true
-	case "Engineer":
-		gs.Engineer.Dead = true
-	}
-
+	gs.Crew.KillCrewMember(member)
 }
 
 func spaceDisease() string {

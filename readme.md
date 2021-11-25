@@ -4,6 +4,15 @@
 
 - Windows executable loops on start screen no matter the input
 
+# TODO
+
+- Add maneuver events
+- Add mission completion evaluation after mars landing
+- Add passenger consumption of provisions
+- Add loss of passengers if insufficient provisions
+- Add Satellite mission
+- Add specific events depending on mission type
+
 # Building an executable
 
 ## Windows

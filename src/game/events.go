@@ -1,7 +1,6 @@
 package game
 
 import (
-	"fmt"
 	"hohmannTransfer/src/graphics"
 	"hohmannTransfer/src/user"
 	"math/rand"
@@ -20,18 +19,18 @@ func (gs *State) DetermineTransferEvent() {
 		graphics.UnremarkableEvent()
 	}
 	if result >= 11 && result <= 20 {
-		fmt.Println("Food Spoilage")
+		gs.foodSpoilageEvent()
 	}
 	if result >= 21 && result <= 30 {
-		fmt.Println("Passenger Mishap")
+		gs.passengerMishapEvent()
 	}
-	if result >= 31 && result <= 40 {
-		fmt.Println("Mechanical Failure")
+	if result >= 31 && result <= 50 {
+		gs.mechanicalFailureEvent()
 	}
-	if result >= 41 && result <= 50 {
+	if result >= 51 && result <= 60 {
 		gs.spaceDiseaseEvent()
 	}
-	if result >= 51 && result <= 80 {
+	if result >= 61 && result <= 80 {
 		graphics.UnremarkableEvent()
 	}
 	if result >= 81 && result <= 100 {

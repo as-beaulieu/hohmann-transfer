@@ -1,6 +1,6 @@
 package game
 
-var (
+const (
 	//Provisions scores
 
 	FUEL_SCORE         = 1
@@ -14,8 +14,11 @@ var (
 
 	//Successful objectives
 
-	COLONY_SUCCESSFUL_SCORE    = 100
-	SATELLITE_SUCCESSFUL_SCORE = 25
+	SUCCESSFUL_SCORE_COLONY    = 100
+	SUCCESSFUL_SCORE_SATELLITE = 25
+	MISSION_CREW_ALIVE         = 50
+
+	DIFFICULTY = 1
 )
 
 func (gs *State) Score() int {
@@ -32,5 +35,19 @@ func (gs *State) Score() int {
 	score += gs.Materials * MATERIALS_SCORE
 	score += gs.Supplies * SUPPLIES_SCORE
 
-	return score
+	if gs.SuccessfulMission {
+		switch gs.MissionType {
+		case MISSION_TYPE_COLONY:
+			score += SUCCESSFUL_SCORE_COLONY
+		case MISSION_TYPE_SATELLITE:
+			score += SUCCESSFUL_SCORE_SATELLITE
+		default:
+		}
+	}
+
+	if gs.MissionCrewAlive {
+		score += MISSION_CREW_ALIVE
+	}
+
+	return score * DIFFICULTY
 }

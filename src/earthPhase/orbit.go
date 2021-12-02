@@ -18,11 +18,9 @@ func earthOrbit(gs *game.State) {
 	user.Pause()
 
 	if gs.MissionFailure {
-		fmt.Println("|                                                                                |")
-		fmt.Println("|        You did not have enough fuel for orbit!                                 |")
-		fmt.Println("|        Your rocket burns up in reentry                                         |")
-		fmt.Println("|                                                                                |")
+		graphics.EarthOrbitFailure()
 		user.Pause()
 		graphics.GameOver()
+		user.Pause()
 	}
 }

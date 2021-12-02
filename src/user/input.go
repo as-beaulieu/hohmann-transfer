@@ -9,7 +9,7 @@ import (
 
 func Input() string {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Make a selection-> ")
+	fmt.Print("Make a selection and press enter --> ")
 	text, _ := reader.ReadString('\n')
 	// remove the delimeter from the string
 	input := strings.TrimSuffix(text, "\n")

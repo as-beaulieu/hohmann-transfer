@@ -24,5 +24,6 @@ func transferBurn(gs *game.State) {
 		fmt.Println("|                                                                                |")
 		user.Pause()
 		graphics.GameOver()
+		user.Pause()
 	}
 }

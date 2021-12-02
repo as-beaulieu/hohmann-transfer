@@ -9,35 +9,34 @@ import (
 	"hohmannTransfer/src/startPhase"
 	"hohmannTransfer/src/transferPhase"
 	"hohmannTransfer/src/user"
-	"runtime"
 )
 
 func main() {
-	gameState := game.State{
-		Settings: game.Settings{
-			OperatingSystem: runtime.GOOS,
-		},
-	}
+	for {
+		gameState := game.NewGameState()
 
-	startScreen(&gameState)
+		startScreen(gameState)
+		if gameState.ExitGame == true {
+			break
+		}
+	}
 }
 
 func startScreen(gameState *game.State) {
-	for {
-		graphics.ClearScreen(gameState.OperatingSystem)
-		graphics.StartScreen()
+	graphics.ClearScreen(gameState.OperatingSystem)
+	graphics.StartScreen()
 
-		switch user.Input() {
-		case "s":
-			fmt.Println("Start the Game")
-			startGame(gameState)
-		case "o":
-			fmt.Println("options")
-			options(gameState)
-		case "e":
-			fmt.Println("exit the game")
-			return
-		}
+	switch user.Input() {
+	case "s":
+		fmt.Println("Start the Game")
+		startGame(gameState)
+	case "o":
+		fmt.Println("options")
+		options(gameState)
+	case "e":
+		fmt.Println("exit the game")
+		gameState.ExitGame = true
+		return
 	}
 }
 

@@ -3,7 +3,13 @@ package graphics
 import "fmt"
 
 func UnremarkableEvent() {
-	fmt.Println("|                                                                                |")
+	borderedFiller()
 	fmt.Println("|  You travel towards Mars uneventfully                                          |")
-	fmt.Println("|                                                                                |")
+	borderedFiller()
+}
+
+func UnremarkableManeuver() {
+	borderedFiller()
+	fmt.Println("|  Your crew reports a successful maneuver as planned.                           |")
+	borderedFiller()
 }

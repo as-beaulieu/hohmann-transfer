@@ -38,3 +38,14 @@ func (gs *State) DetermineTransferEvent() {
 	}
 	user.Pause()
 }
+
+func (gs *State) DetermineEarthManeuverEvent() {
+	result := Random(100)
+	if result >= 40 && result <= 80 {
+		graphics.UnremarkableManeuver()
+	}
+	if result >= 81 && result <= 100 {
+		gs.offCourseManeuver()
+	}
+	user.Pause()
+}

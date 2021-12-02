@@ -11,10 +11,7 @@ func enterOrbit(gs *game.State) {
 	graphics.ClearScreen(gs.OperatingSystem)
 	gs.UseFuel(5)
 	gs.StatusScreen()
-	fmt.Println("|                                                                                |")
-	fmt.Println("|  You begin your orbital burn for Mars!                                         |")
-	fmt.Println("|  You use 5 fuel!                                                               |")
-	fmt.Println("|                                                                                |")
+	graphics.MarsEnterOrbit()
 	user.Pause()
 
 	if gs.MissionFailure {
@@ -24,5 +21,6 @@ func enterOrbit(gs *game.State) {
 		fmt.Println("|                                                                                |")
 		user.Pause()
 		graphics.GameOver()
+		user.Pause()
 	}
 }

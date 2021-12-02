@@ -15,5 +15,6 @@ func inFlightEvent(gs *game.State) {
 	if gs.MissionFailure {
 		user.Pause()
 		graphics.GameOver()
+		user.Pause()
 	}
 }

@@ -10,7 +10,7 @@ func missionSelect(gs *game.State) {
 	fmt.Println("|                                                                                |")
 	fmt.Println("|  Choose your mission to send to Mars!                                          |")
 	fmt.Println("|  (1) - Send a colony                                                           |")
-	fmt.Println("|  (2) - Send a satellite                                                        |")
+	fmt.Println("|  (2) - Send a satellite (Not Implemented Yet)                                  |")
 	fmt.Println("|                                                                                |")
 
 	switch user.Input() {
